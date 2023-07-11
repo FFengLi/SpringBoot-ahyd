@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ffl.ahydboot.mapper.PlanDesignExcelRecordMapper">
+
+    <resultMap id="BaseResultMap" type="com.ffl.ahydboot.bean.PlanDesignExcelRecord">
+            <id property="id" column="Id" jdbcType="BIGINT"/>
+            <result property="planDesignId" column="plan_design_id" jdbcType="BIGINT"/>
+            <result property="planDesignResultId" column="plan_design_result_id" jdbcType="BIGINT"/>
+            <result property="sysName" column="sys_name" jdbcType="VARCHAR"/>
+            <result property="cableSegName" column="cable_seg_name" jdbcType="VARCHAR"/>
+            <result property="stationA" column="station_a" jdbcType="VARCHAR"/>
+            <result property="stationTypeA" column="station_type_a" jdbcType="VARCHAR"/>
+            <result property="stationZ" column="station_z" jdbcType="VARCHAR"/>
+            <result property="stationTypeZ" column="station_type_z" jdbcType="VARCHAR"/>
+            <result property="cableName" column="cable_name" jdbcType="VARCHAR"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        Id,plan_design_id,plan_design_result_id,
+        sys_name,cable_seg_name,station_a,
+        station_type_a,station_z,station_type_z,
+        cable_name,create_time
+    </sql>
+</mapper>

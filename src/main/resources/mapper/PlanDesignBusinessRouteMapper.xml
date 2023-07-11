@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ffl.ahydboot.mapper.PlanDesignBusinessRouteMapper">
+
+    <resultMap id="BaseResultMap" type="com.ffl.ahydboot.bean.PlanDesignBusinessRoute">
+            <id property="id" column="Id" jdbcType="BIGINT"/>
+            <result property="planDesignId" column="plan_design_id" jdbcType="BIGINT"/>
+            <result property="planDesignResultId" column="plan_design_result_id" jdbcType="BIGINT"/>
+            <result property="circleName" column="circle_name" jdbcType="VARCHAR"/>
+            <result property="businessType" column="business_type" jdbcType="VARCHAR"/>
+            <result property="businessChannel" column="business_channel" jdbcType="VARCHAR"/>
+            <result property="stationA" column="station_a" jdbcType="VARCHAR"/>
+            <result property="stationZ" column="station_z" jdbcType="VARCHAR"/>
+            <result property="businessCharacter" column="business_character" jdbcType="VARCHAR"/>
+            <result property="mainRoute" column="main_route" jdbcType="VARCHAR"/>
+            <result property="backupRoute" column="backup_route" jdbcType="VARCHAR"/>
+            <result property="sameRouteDetail" column="same_route_detail" jdbcType="VARCHAR"/>
+            <result property="sameStationName" column="same_station_name" jdbcType="VARCHAR"/>
+            <result property="isSameRoute" column="is_same_route" jdbcType="TINYINT"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        Id,plan_design_id,plan_design_result_id,
+        circle_name,business_type,business_channel,
+        station_a,station_z,business_character,
+        main_route,backup_route,same_route_detail,
+        same_station_name,is_same_route,create_time
+    </sql>
+</mapper>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ffl.ahydboot.mapper.PlanDesignInfoMapper">
+
+    <resultMap id="BaseResultMap" type="com.ffl.ahydboot.bean.PlanDesignInfo">
+            <id property="id" column="Id" jdbcType="BIGINT"/>
+            <result property="planBillNo" column="plan_bill_no" jdbcType="VARCHAR"/>
+            <result property="planDesignName" column="plan_design_name" jdbcType="VARCHAR"/>
+            <result property="designCompany" column="design_company" jdbcType="VARCHAR"/>
+            <result property="specId" column="spec_id" jdbcType="SMALLINT"/>
+            <result property="projectDirector" column="project_director" jdbcType="VARCHAR"/>
+            <result property="specLeader" column="spec_leader" jdbcType="VARCHAR"/>
+            <result property="designer" column="designer" jdbcType="VARCHAR"/>
+            <result property="reviewer" column="reviewer" jdbcType="VARCHAR"/>
+            <result property="source" column="source" jdbcType="TINYINT"/>
+            <result property="systemCadFileId" column="system_cad_file_id" jdbcType="INTEGER"/>
+            <result property="systemCadFileName" column="system_cad_file_name" jdbcType="VARCHAR"/>
+            <result property="systemCadFileUrl" column="system_cad_file_url" jdbcType="VARCHAR"/>
+            <result property="systemExcelFileId" column="system_excel_file_id" jdbcType="INTEGER"/>
+            <result property="systemExcelFileName" column="system_excel_file_name" jdbcType="VARCHAR"/>
+            <result property="systemExcelFileUrl" column="system_excel_file_url" jdbcType="VARCHAR"/>
+            <result property="channelExcelFileId" column="channel_excel_file_id" jdbcType="INTEGER"/>
+            <result property="channelExcelFileName" column="channel_excel_file_name" jdbcType="VARCHAR"/>
+            <result property="channelExcelFileUrl" column="channel_excel_file_url" jdbcType="VARCHAR"/>
+            <result property="cadCoordLeft" column="cad_coord_left" jdbcType="INTEGER"/>
+            <result property="cadCoordTop" column="cad_coord_top" jdbcType="INTEGER"/>
+            <result property="cadCoordRight" column="cad_coord_right" jdbcType="INTEGER"/>
+            <result property="cadCoordBottom" column="cad_coord_bottom" jdbcType="INTEGER"/>
+            <result property="staffId" column="staff_id" jdbcType="INTEGER"/>
+            <result property="staffName" column="staff_name" jdbcType="VARCHAR"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        Id,plan_bill_no,plan_design_name,
+        design_company,spec_id,project_director,
+        spec_leader,designer,reviewer,
+        source,system_cad_file_id,system_cad_file_name,
+        system_cad_file_url,system_excel_file_id,system_excel_file_name,
+        system_excel_file_url,channel_excel_file_id,channel_excel_file_name,
+        channel_excel_file_url,cad_coord_left,cad_coord_top,
+        cad_coord_right,cad_coord_bottom,staff_id,
+        staff_name,create_time,update_time
+    </sql>
+
+    <!--获取当前工单号集合-->
+    <select id="getPlanBillNos" resultType="string">
+        SELECT plan_bill_no FROM t_plan_design_info ORDER BY plan_bill_no DESC
+    </select>
+
+    <!--搜索工单-->
+    <select id="searchBill" resultMap="BaseResultMap" parameterType="com.ffl.ahydboot.bean.PlanDesignDto">
+        SELECT *
+        FROM t_plan_design_info
+        <where>
+            <if test="planDesignName!=null and planDesignName.length()!=0">
+                AND plan_design_name LIKE CONCAT('%',#{planDesignName},'%')
+            </if>
+            <if test="specId!=null">
+                AND spec_id=#{specId}
+            </if>
+            <if test="designer!=null and designer.length()!=0">
+                AND designer=#{designer}
+            </if>
+
+        </where>
+        LIMIT #{current},#{size}
+    </select>
+
+    <select id="getPlanDesignCountByWhere" resultType="int" parameterType="com.ffl.ahydboot.bean.PlanDesignDto">
+        SELECT COUNT(*)
+        FROM t_plan_design_info
+        <where>
+            <if test="planDesignName!=null and planDesignName.length()!=0">
+                AND plan_design_name LIKE CONCAT('%',#{planDesignName},'%')
+            </if>
+            <if test="specId!=null">
+                AND spec_id=#{specId}
+            </if>
+            <if test="designer!=null and designer.length()!=0">
+                AND designer=#{designer}
+            </if>
+
+        </where>
+    </select>
+</mapper>

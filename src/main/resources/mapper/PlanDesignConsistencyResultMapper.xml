@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ffl.ahydboot.mapper.PlanDesignConsistencyResultMapper">
+
+    <resultMap id="BaseResultMap" type="com.ffl.ahydboot.bean.PlanDesignConsistencyResult">
+            <id property="id" column="Id" jdbcType="BIGINT"/>
+            <result property="planDesignId" column="plan_design_id" jdbcType="BIGINT"/>
+            <result property="planDesignResultId" column="plan_design_result_id" jdbcType="BIGINT"/>
+            <result property="analysCadNum" column="analys_cad_num" jdbcType="INTEGER"/>
+            <result property="analysExcelNum" column="analys_excel_num" jdbcType="INTEGER"/>
+            <result property="analysResult" column="analys_result" jdbcType="VARCHAR"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        Id,plan_design_id,plan_design_result_id,
+        analys_cad_num,analys_excel_num,analys_result,
+        create_time
+    </sql>
+</mapper>
