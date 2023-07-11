@@ -188,33 +188,9 @@ public class PlanDesignInfoServiceImpl extends ServiceImpl<PlanDesignInfoMapper,
         return new ResponseData("保存成功");
     }
 
-
-    //    @Override
-//    public ResponseData searchBill(PlanDesignDto planDesignDTO) {
-//        int totalRow = planDesignInfoMapper.getPlanDesignCountByWhere(planDesignDTO);
-//        int currentPage = (planDesignDTO.getCurrent() - 1) * planDesignDTO.getSize();
-//        planDesignDTO.setCurrent(currentPage);
-//        List<PlanDesignInfo> planDesignInfoList = planDesignInfoMapper.searchBill(planDesignDTO);
-//        Page<PlanDesignInfo> planDesignInfoPage = new Page<>();
-//
-//        int pages = 0;
-//        if (totalRow % planDesignDTO.getSize() == 0) {
-//            pages = totalRow / planDesignDTO.getSize();
-//        } else {
-//            pages = totalRow / planDesignDTO.getSize() + 1;
-//        }
-//        planDesignInfoPage.setRecords(planDesignInfoList);
-//        planDesignInfoPage.setCurrent(currentPage);
-//        planDesignInfoPage.setSize(planDesignDTO.getSize());
-//        planDesignInfoPage.setPages(pages);
-//        planDesignInfoPage.setTotal(totalRow);
-//        return ResponseData.ok(planDesignInfoPage);
-//    }
-    @Transactional
     @Override
     public IPage<PlanDesignInfo> searchBill(PlanDesignInfoQueryDto queryDto) {
-//        long currentPage = (queryDto.getCurrent() - 1) * queryDto.getSize();
-        //设置分页参数
+
         Page<PlanDesignInfo> page = new Page<>(queryDto.getCurrent(), queryDto.getSize());
         logger.info("当前页首记录索引：{}",queryDto.getCurrent());
         logger.info("页大小：{}",queryDto.getSize());
